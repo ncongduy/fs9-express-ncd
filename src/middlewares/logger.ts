@@ -6,11 +6,12 @@ const logPath = path.join(__dirname, 'log.txt');
 
 const logger = (req: Request, res: Response, next: NextFunction) => {
   const date = new Date();
-  const log = JSON.stringify({ body: req.body, path: req.path, date: date }) + ', ';
+  const log =
+    JSON.stringify({ path: req.path, method: req.method, body: req.body, date: date }) + ', ';
 
   fs.appendFile(logPath, log, function (err) {
     if (err) throw err;
-    console.log('Store the information inside file log.txt');
+    console.log('Save the log information inside file log.txt');
     console.log(log);
   });
 
