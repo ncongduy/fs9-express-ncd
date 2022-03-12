@@ -7,7 +7,7 @@ const logPath = path.join(__dirname, 'log.txt');
 const logger = (req: Request, res: Response, next: NextFunction) => {
   const date = new Date();
   const log =
-    JSON.stringify({ path: req.path, method: req.method, body: req.body, date: date }) + ', ';
+    JSON.stringify({ path: req.path, method: req.method, body: req.body, date: date }) + ', \n';
 
   fs.appendFile(logPath, log, function (err) {
     if (err) throw err;
