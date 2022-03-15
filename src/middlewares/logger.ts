@@ -10,7 +10,7 @@ const logger = (req: Request, res: Response, next: NextFunction) => {
     JSON.stringify({ path: req.path, method: req.method, body: req.body, date: date }) + ', \n';
 
   fs.appendFile(logPath, log, function (err) {
-    if (err) throw err;
+    if (err) next(err);
     console.log('Save the log information inside file log.txt');
     console.log(log);
   });
